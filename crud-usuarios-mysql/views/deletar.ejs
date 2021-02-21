@@ -1,0 +1,49 @@
+<%- include('partials/header') %>
+<%- include('partials/menu') %>
+<div class="container">
+    <div class="card espaco">
+        <div class="card-header">
+            <h1>Apagar Usuarios</h1>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Nome</th>
+                        <th>Idade</th>
+                        <th>Cidade</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% usuarios.forEach((usuario)=>{ %> 
+                        <tr>
+                            <td><%= usuario.nome %></td>
+                            <td><%= usuario.idade %></td>
+                            <td><%= usuario.cidade %></td>
+                            <td>
+                                <form method="post" action="/apagarusuario" style="display: inline;" onsubmit="confirmarDelecao(event,this)">
+                                    <input type="hidden" name="id" value="<%= usuario.id %>">
+                                    <button class="btn btn-danger">Apagar</button>
+                                </form>
+                            </td>
+                        </tr>
+                    <%})%>
+                    
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+</div>
+<script>
+    function confirmarDelecao(event,form){
+        event.preventDefault()
+        var decision = confirm("Deseja deletar o usuario ?")
+
+        if(decision){
+            form.submit()
+        }
+    }
+</script>
+<%- include('partials/footer') %>

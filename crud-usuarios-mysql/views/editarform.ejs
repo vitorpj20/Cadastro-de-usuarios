@@ -1,0 +1,20 @@
+<%- include('partials/header') %>
+<%- include('partials/menu') %>
+<div class="container">
+    <div class="card espaco">
+        <div class="card-header"><h1>Editar Usuario</h1></div>
+        <div class="card-body">
+            <form class="form" action="/editarusuario" method='POST'>
+                <label for="">Nome:</label>
+                <input class="form-control" type="text" name="nome" value='<%=usuario.nome%>''><br>
+                <label for="">Idade:</label>
+                <input class="form-control" type="number" name="idade" value='<%= usuario.idade%>'><br>
+                <label for="">Cidade: </label>
+                <input class="form-control" type="text" name="cidade" value='<%= usuario.cidade%>'><br>
+                <input type="hidden" name="id" value=<%= usuario.id %>>
+                <button class="btn btn-primary" type="submit">Editar</button>
+            </form>
+        </div>
+    </div>  
+</div>
+<%- include('partials/footer') %>
